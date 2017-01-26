@@ -16,9 +16,14 @@
 #
 import webapp2
 
+import caesar
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        rotations = 1
+        message = 'the'
+        encrypted_message = caesar.encrypt(message, rotations)
+        self.response.write(encrypted_message)
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
