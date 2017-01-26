@@ -23,7 +23,12 @@ class MainHandler(webapp2.RequestHandler):
         rotations = 1
         message = 'the'
         encrypted_message = caesar.encrypt(message, rotations)
-        self.response.write(encrypted_message)
+
+        textarea = "<textarea>" + encrypted_message + "</textarea>"
+        submit = "<input type='submit'/>"
+        form = "<form>" + textarea + "<br>" + submit + "</form>"
+
+        self.response.write(form)
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
